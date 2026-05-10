@@ -1,68 +1,47 @@
-# Host Capture — Forensic Collection & Processing Framework
+# Host Capture
 
-**Host Capture** is a development project to build a two-part forensic tool:  
+Host Capture is a Windows forensic collection and processing framework evolved from the CHIRON/PERCIVAL workflow.
 
-1. **Capture Module** — a stand-alone utility that gathers artifacts directly from a host, run from removable media (USB/drive).  
-2. **Processing Module** — a follow-on workflow that processes those artifacts inside **Rampart** for parsing, enrichment, and forensic analysis.  
+This version provides a KAPE-free host collector and a native processing path that does not use EZ tools by default.
 
----
+## Quick Start
 
-## 🎯 Purpose
+Run capture as administrator from trusted removable media or a local staging folder:
 
-Incident response and forensic investigations require both **fast capture** in the field and **structured processing** back in the lab.  
-**Host Capture** unifies these into one workflow:  
+```powershell
+.\Start-Capture.bat
+```
 
-- Portable, repeatable artifact collection on Windows hosts.  
-- Consistent, timestamped evidence folders for chain of custody.  
-- Automated import into Rampart for signature checks, hashing, parsing, and packaging.  
+Process CHIRON-style captures on an analyst workstation:
 
----
+```powershell
+.\Start-Process.bat -Mode All -NoPrompt
+```
 
-## 🧩 Architecture
+## Architecture
 
-### 1. Capture Module
-- Run directly from trusted removable media.  
-- Collect volatile state: processes, services, logged-in users, network connections.  
-- Gather non-volatile artifacts: registry hives, event logs, startup items, AppCompatCache, etc.  
-- Optional memory capture if supported binaries are present.  
-- Write artifacts into a timestamped, host-labeled folder.  
+### Capture Module
 
-### 2. Processing Module (Rampart)
-- Ingest captured folders into Rampart.  
-- Run sigcheck, hashing, ADS scans, and basic DFIR parsers.  
-- Export structured outputs (CSV, JSON, VHDX).  
-- Package results into verified archives for long-term storage.  
+- Runs directly from a trusted drive.
+- Preserves CHIRON-style collection names and folder layout.
+- Collects volatile state, registry hives, event logs, NTFS metadata, execution artifacts, user activity artifacts, browser artifacts, and selected modern Windows artifacts.
+- Supports optional memory capture when approved memory capture binaries are present.
+- Falls back to a batch-only XP/Server 2003 collector when needed.
+- Writes `capture-manifest.json` with host details, timing, commands, tool hashes, collected file hashes, skipped artifacts, and failures on modern hosts.
 
----
+### Processing Module
 
-## 📂 Repository Purpose
+- Ingests CHIRON-style capture folders.
+- Defaults to native processing with no EZ parser execution.
+- Emits JSON summaries, text-command JSON, event-log JSON where readable, and artifact inventory JSON.
+- External parser mode exists only for explicitly approved tool use.
 
-This repo holds the **automation scripts, configs, and wrappers** used to build Host Capture.  
+## Important Boundaries
 
-- Capture logic evolves from earlier tools (CHIRON, PERCIVAL, TERO).  
-- Processing logic integrates directly with Rampart.  
-- Third-party binaries (Sysinternals, FTK Imager, KAPE, etc.) are not shipped here — only the automation layer.  
+- KAPE is not used.
+- EZ tools are not used by default.
+- Velociraptor and DFIR ORC are not required dependencies.
+- XP support is for capture only; processing is intended for an analyst workstation.
+- Third-party binaries are not shipped in this repo. Optional approved binaries belong under `Tools\binaries`, `Tools\EZ`, or `Tools\plaso`, which are ignored by git.
 
----
-
-## 🚀 Usage Concept
-
-- **Field use (USB/drive):** Run `HostCapture.bat` (or equivalent) on the target host.  
-- **Lab use (Rampart):** Import the captured folder into Rampart for automated processing.  
-
----
-
-## ⚠️ Notes
-
-- Always validate and verify third-party binaries before use.  
-- Ensure proper chain-of-custody documentation is maintained.  
-- Use only on authorized systems as part of sanctioned investigations.  
-
----
-
-## 📌 Next Steps
-
-- [ ] Finalize capture script (stand-alone USB-safe runner).  
-- [ ] Define output schema and manifest for Rampart integration.  
-- [ ] Extend Rampart modules for full parsing and packaging.  
-- [ ] Test workflow end-to-end across legacy and modern Windows versions.  
+See [Docs/README.md](Docs/README.md) for full usage and parity notes.

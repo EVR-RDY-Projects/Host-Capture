@@ -1,0 +1,63 @@
+uptime systeminfo | find "Time:"
+netstat %SYSTEMROOT%\System32\netstat.exe -ano
+arpcache %SYSTEMROOT%\System32\arp.exe -a
+pslist %binaries%\pslist.exe -m /accepteula
+tasklist_svc %SYSTEMROOT%\System32\tasklist.exe /svc /fo csv
+handlesummary %binaries%\handle.exe -s /accepteula
+handles %binaries%\handle.exe -a /accepteula
+net_file %SYSTEMROOT%\System32\net.exe file
+loadeddlls %binaries%\listdlls.exe -r /accepteula
+ipconfig_all %SYSTEMROOT%\System32\ipconfig.exe /all
+netstat_r %SYSTEMROOT%\System32\netstat.exe -r
+ipconfig_displaydns %SYSTEMROOT%\System32\ipconfig.exe /displaydns
+psloggedon %binaries%\psloggedon.exe /accepteula
+logonsessions %binaries%\logonsessions.exe -c -p /accepteula
+net_sessions %SYSTEMROOT%\System32\net.exe sessions
+psfile %binaries%\psfile.exe /accepteula
+autoruns %binaries%\autorunsc.exe -a ^* -c /accepteula
+gplist %binaries%\gplist.exe
+atjobs %SYSTEMROOT%\System32\at.exe
+nbtstat_sessions %SYSTEMROOT%\System32\nbtstat.exe -S
+nbtstat_cache %SYSTEMROOT%\System32\nbtstat.exe -c
+net_view %SYSTEMROOT%\System32\net.exe view
+net_view_localhost %SYSTEMROOT%\System32\net.exe view 127.0.0.1
+net_user %SYSTEMROOT%\System32\net.exe user
+net_share %SYSTEMROOT%\System32\net.exe share
+net_use %SYSTEMROOT%\System32\net.exe use
+net_localgroup %SYSTEMROOT%\System32\net.exe localgroup
+net_group_administrators %SYSTEMROOT%\System32\net.exe group "administrators"
+net_localgroup_users %SYSTEMROOT%\System32\net.exe localgroup "users"
+net_localgroup_guests %SYSTEMROOT%\System32\net.exe localgroup "guests"
+net_localgroup_rdp %SYSTEMROOT%\System32\net.exe localgroup "remote desktop users"
+net_localgroup_administrators %SYSTEMROOT%\System32\net.exe localgroup "administrators"
+net_statistics_workstation %SYSTEMROOT%\System32\net.exe statistics workstation
+net_statistics_server %SYSTEMROOT%\System32\net.exe statistics server
+schtasks %SYSTEMROOT%\System32\schtasks.exe /query /v /fo csv
+driverquery %SYSTEMROOT%\System32\driverquery.exe /v /fo csv
+driverquery_signed %SYSTEMROOT%\System32\driverquery.exe /si /fo csv
+gpresult %SYSTEMROOT%\system32\gpresult /z
+netsh_interface_dump %SYSTEMROOT%\system32\netsh.exe interface dump
+netsh_show_helper %SYSTEMROOT%\system32\netsh.exe show helper
+vssadmin_list_writers %SYSTEMROOT%\system32\vssadmin.exe list writers
+vssadmin_list_providers %SYSTEMROOT%\system32\vssadmin.exe list providers
+vssadmin_list_shadows %SYSTEMROOT%\system32\vssadmin.exe list shadows
+wmic_process %SYSTEMROOT%\system32\wbem\wmic.exe process get name,commandline,processid,parentprocessid,sessionid,description,executablepath /format:csv 2>null
+wmic_csproduct %SYSTEMROOT%\system32\wbem\wmic.exe csproduct get vendor,name,identifyingnumber /format:csv 2>null
+wmic_serial %SYSTEMROOT%\system32\wbem\wmic.exe bios get serialnumber 2>null
+wmic_primiscadapters %SYSTEMROOT%\system32\wbem\wmic.exe /namespace:\\root\wmi path MSNdis_CurrentPacketFilter get /format:csv 2>null
+wmic_computersystem %SYSTEMROOT%\system32\wbem\wmic.exe computersystem get ^* /format:csv 2>null
+wmic_logicaldisk %SYSTEMROOT%\system32\wbem\wmic.exe logicaldisk get name,description,drivetype,filesystem,freespace,size,volumeserialnumber,volumename /format:csv 2>null
+wmic_partition %SYSTEMROOT%\system32\wbem\wmic.exe partition get caption,diskindex,index,size,blocksize,primarypartition,status,type /format:csv 2>null
+wmic_nic %SYSTEMROOT%\system32\wbem\wmic.exe nic get adaptertype,name,macaddress,servicename /format:csv 2>null
+wmic_nicconfig %SYSTEMROOT%\system32\wbem\wmic.exe nicconfig get ^* /format:csv 2>null
+wmic_onboarddevice %SYSTEMROOT%\system32\wbem\wmic.exe onboarddevice get description,devicetype,enabled,status /format:csv 2>null
+wmic_useraccount %SYSTEMROOT%\system32\wbem\wmic.exe useraccount list full /format:csv 2>null
+wmic_netlogin %SYSTEMROOT%\system32\wbem\wmic.exe netlogin get lastlogon,numberoflogons,name,userid,flags /format:csv 2>null
+wmic_group %SYSTEMROOT%\system32\wbem\wmic.exe group get name,domain,description,SID /format:csv 2>null
+wmic_service %SYSTEMROOT%\system32\wbem\wmic.exe service get * /format:list 2>null
+wmic_jobs %SYSTEMROOT%\system32\wbem\wmic.exe job list full /format:csv 2>null
+wmic_startup %SYSTEMROOT%\system32\wbem\wmic.exe startup list full /format:csv 2>null
+wmic_ntdomain_brief %SYSTEMROOT%\system32\wbem\wmic.exe ntdomain list brief /format:csv 2>null
+wmic_eventfilter %SYSTEMROOT%\system32\wbem\wmic.exe /namespace:\\root\subscription path __EventFilter get /format:csv 2>null
+wmic_eventconsumer %SYSTEMROOT%\system32\wbem\wmic.exe /namespace:\\root\subscription path __EventConsumer get /format:csv 2>null
+wmic_filtertoconsumer %SYSTEMROOT%\system32\wbem\wmic.exe /namespace:\\root\subscription path __FiltertoConsumerBinding get /format:csv 2>null

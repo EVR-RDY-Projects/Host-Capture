@@ -1,0 +1,22 @@
+# Generated capture and processing output
+Collection/
+Cases/
+_native_cases/
+_native_cases_check/
+_parity_cases/
+
+# Optional copied third-party or case-specific tool payloads
+Tools/binaries/
+Tools/EZ/
+Tools/plaso/
+
+# Runtime scratch/log output
+*.log
+*.tmp
+*.dmp
+*.raw
+*.zdmp
+
+# Windows metadata
+Thumbs.db
+Desktop.ini

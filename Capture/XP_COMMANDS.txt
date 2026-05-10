@@ -1,0 +1,43 @@
+uptime systeminfo | find "Time:"
+netstat %SYSTEMROOT%\System32\netstat.exe -ano
+arpcache %SYSTEMROOT%\System32\arp.exe -a
+pslist %binaries%\pslist.exe -m /accepteula
+tasklist_svc %SYSTEMROOT%\System32\tasklist.exe /svc /fo csv
+handlesummary %binaries%\handle.exe -s /accepteula
+handles %binaries%\handle.exe -a /accepteula
+net_file %SYSTEMROOT%\System32\net.exe file
+loadeddlls %binaries%\listdlls.exe -r /accepteula
+ipconfig_all %SYSTEMROOT%\System32\ipconfig.exe /all
+netstat_r %SYSTEMROOT%\System32\netstat.exe -r
+ipconfig_displaydns %SYSTEMROOT%\System32\ipconfig.exe /displaydns
+psloggedon %binaries%\psloggedon.exe /accepteula
+logonsessions %binaries%\logonsessions.exe -c -p /accepteula
+net_sessions %SYSTEMROOT%\System32\net.exe sessions
+psfile %binaries%\psfile.exe /accepteula
+autoruns %binaries%\autorunsc.exe -a ^* -c /accepteula
+gplist %binaries%\gplist.exe
+atjobs %SYSTEMROOT%\System32\at.exe
+nbtstat_sessions %SYSTEMROOT%\System32\nbtstat.exe -S
+nbtstat_cache %SYSTEMROOT%\System32\nbtstat.exe -c
+net_view %SYSTEMROOT%\System32\net.exe view
+net_view_localhost %SYSTEMROOT%\System32\net.exe view 127.0.0.1
+net_user %SYSTEMROOT%\System32\net.exe user
+net_share %SYSTEMROOT%\System32\net.exe share
+net_use %SYSTEMROOT%\System32\net.exe use
+net_localgroup %SYSTEMROOT%\System32\net.exe localgroup
+net_group_administrators %SYSTEMROOT%\System32\net.exe group "administrators"
+net_localgroup_users %SYSTEMROOT%\System32\net.exe localgroup "users"
+net_localgroup_guests %SYSTEMROOT%\System32\net.exe localgroup "guests"
+net_localgroup_rdp %SYSTEMROOT%\System32\net.exe localgroup "remote desktop users"
+net_localgroup_administrators %SYSTEMROOT%\System32\net.exe localgroup "administrators"
+net_statistics_workstation %SYSTEMROOT%\System32\net.exe statistics workstation
+net_statistics_server %SYSTEMROOT%\System32\net.exe statistics server
+schtasks %SYSTEMROOT%\System32\schtasks.exe /query /v /fo csv
+driverquery %SYSTEMROOT%\System32\driverquery.exe /v /fo csv
+driverquery_signed %SYSTEMROOT%\System32\driverquery.exe /si /fo csv
+gpresult %SYSTEMROOT%\system32\gpresult /z
+netsh_interface_dump %SYSTEMROOT%\system32\netsh.exe interface dump
+netsh_show_helper %SYSTEMROOT%\system32\netsh.exe show helper
+vssadmin_list_writers %SYSTEMROOT%\system32\vssadmin.exe list writers
+vssadmin_list_providers %SYSTEMROOT%\system32\vssadmin.exe list providers
+vssadmin_list_shadows %SYSTEMROOT%\system32\vssadmin.exe list shadows

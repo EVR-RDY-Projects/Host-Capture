@@ -1,0 +1,54 @@
+{
+  "name": "NoKapeHostProfile",
+  "version": "0.1.0",
+  "description": "KAPE-free Windows host capture profile inspired by CHIRON legacy and normal collection coverage.",
+  "artifactGroups": [
+    "memory",
+    "system-enumeration",
+    "network-enumeration",
+    "process-and-service-enumeration",
+    "registry-hives",
+    "event-logs",
+    "ntfs-metadata",
+    "execution-artifacts",
+    "user-activity",
+    "browser-artifacts",
+    "scheduled-tasks",
+    "defender-artifacts",
+    "wer-artifacts",
+    "cloud-storage-artifacts",
+    "remote-admin-artifacts",
+    "critical-files"
+  ],
+  "externalTools": {
+    "optionalBinaries": [
+      "DumpIt64.exe",
+      "DumpIt.exe",
+      "winpmem2_1.exe",
+      "rawcopy64.exe",
+      "rawcopy.exe",
+      "extractusjournal64.exe",
+      "extractusjournal.exe",
+      "sigcheck64.exe",
+      "sigcheck.exe",
+      "autorunsc64.exe",
+      "autorunsc.exe",
+      "handle.exe",
+      "listdlls.exe",
+      "logonsessions.exe",
+      "psfile.exe",
+      "pslist64.exe",
+      "pslist.exe",
+      "psloggedon64.exe",
+      "psloggedon.exe",
+      "tcpvcon.exe"
+    ],
+    "notUsed": [
+      "KAPE",
+      "kape.exe",
+      "gkape.exe",
+      "tkape",
+      "mkape"
+    ]
+  }
+}
